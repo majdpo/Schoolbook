@@ -1,12 +1,4 @@
-<button class="btn nav-link" style="background-color: #343A40" type="button" data-toggle="modal" data-target="#exampleModal">
-        Post
-    </button>
-
-<!--
-<button class="btn btn-outline-light" type="button" data-toggle="modal" data-target="#exampleModal">
-    ❂ Post
-    </button>
--->
+<button type="button" class="btn btn-outline-light my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal">Post</button>
 
 
 

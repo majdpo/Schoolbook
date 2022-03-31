@@ -1,5 +1,5 @@
 <?php
-include "conectdb.php";
+include "script/conectdb.php";
 
 $id=$_GET['id'];
 $sql = "SELECT * FROM post WHERE id = $id";

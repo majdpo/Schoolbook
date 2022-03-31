@@ -1,12 +1,15 @@
 <?php
 session_start();
+?>
+<script>
+    alert("Your username or password is incorrect!");
+</script>
 
-?><!doctype html>
+<!doctype html>
 <head>
     <title>Log In</title>
 </head>
-<style>
-    .myloginform {
+<style>    .myloginform {
         margin:2rem auto;
         max-width: 300px;
         padding: 1rem 2rem;
@@ -65,28 +68,30 @@ session_start();
         margin-left: 37%;
         font-family: -apple-system;
         font-size: 20px;
+
+
     }
     body {
 
-        background-image: url("icons/2495573.png");
+        background-image: url("../icons/2495573.png");
     }
     #loginsubmit:hover{
-        background: #faf49e;
+        background: #FFFABA;
     }
 </style>
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
 <body>
 
-        <div class="myloginform border-dark ">
-            <h3>Log In Form</h3>
+<div class="myloginform border-dark ">
+    <h3>Log In Form</h3>
 
-            <form action="login system/login-warning.php" method="post">
-            <label for="loginname">User Name</label>
-            <input type="text" placeholder="Username" id="loginname" name="username">
-            <label for="loginpassword">Password</label>
-            <input type="password" id="loginpassword" name="password" placeholder="Password">
-            <input type="submit" class="btn" id="loginsubmit" value="Log in">
-        </form>
-        </div>
+    <form action="login-warning.php" method="post">
+        <label for="loginname">User Name</label>
+        <input type="text" placeholder="Username" id="loginname" name="username">
+        <label for="loginpassword">Password</label>
+        <input type="password" id="loginpassword" name="password" placeholder="Password">
+        <input type="submit" class="btn" id="loginsubmit" value="Log in">
+    </form>
+</div>
 </body>
 </html>

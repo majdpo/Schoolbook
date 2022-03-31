@@ -1,6 +1,6 @@
 <?php
 
-include "conectdb.php";
+include "script/conectdb.php";
 
 
 $auteur = $_POST['auteur'];
@@ -42,4 +42,4 @@ $sql= "INSERT INTO  post (auteur, title, bericht, datepost, imageSize, imageNewN
 $sth= $db->prepare($sql);
 $sth->execute([$auteur, $title, $bericht, $datepost, $imageSize, $imageNewName, $likenew]);
 
-header("location: index.php");
+header("location: main-page.php");

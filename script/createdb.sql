@@ -34,3 +34,16 @@ ALTER TABLE post
 
 
     */
+
+USE schoolbook;
+
+CREATE TABLE comments (
+
+                      id INT NOT NULL ,
+
+                      comment VARCHAR(512),
+
+                      commentnumber numeric(4),
+
+                      PRIMARY KEY (id)
+);

@@ -1,7 +1,6 @@
 <?php
 
-
-include "conectdb.php";
+include "script/conectdb.php";
 
 
 $id = $_GET['id'];
@@ -14,4 +13,4 @@ $sth = $db->prepare($sql);
 $sth->execute(
     [':id' => $id]);
 
-header("location:index.php");
+header("location:main-page.php");

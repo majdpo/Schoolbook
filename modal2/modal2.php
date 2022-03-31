@@ -1,4 +1,4 @@
-<button type="button" class="btn nav-link" style="background-color: #343A40" data-toggle="modal" data-target="#exampleModalCenter">
+<button type="button" class="btn btn-outline-light my-2 my-sm-0" data-toggle="modal" data-target="#exampleModalCenter">
     Info
 </button>
 
