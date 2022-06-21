@@ -1,41 +1,11 @@
 <?php
-
-$id = empty($_GET["id"]) ? null : $_GET["id"];
-
-
-
-include "../script/conectdb.php";
-
-$sql = "SELECT * FROM post WHERE id=:id";
-
-
-
-$params = array(
-
-    "id" => $id
-
-);
-
-
-
-try {
-
-    $sth = $db->prepare($sql);
-
-    $sth->execute($params);
-
-    $post = $sth->fetch(PDO::FETCH_ASSOC);
-
-} catch (PDOException $e) {
-
-    echo $e->getMessage();
-
-}
-include "../templates/header.php";
+include "read.php";
 ?>
-<style> body{
-        background-image: url("../icons/anime-1648169181417-8687.jpg");
-        background-size: cover;
+
+<style>
+body{
+    background-image: url("../icons/anime-1648169181417-8687.jpg");
+    background-size: cover;
     }
 #my-div{
     margin-left: 20%;
@@ -47,7 +17,9 @@ include "../templates/header.php";
 }
 #my-div input, textarea{
     font-family: Arial;
-
+}
+#Title,#auteur,#exampleFormControlTextarea1{
+    border: transparent;
 }
 #my-h3{
     text-align: center;
@@ -65,35 +37,23 @@ include "../templates/header.php";
 }
 </style>
 
-<?php  $title = $auteur = $bericht = "";
-
-if (!empty($post)) {
-
-    $title = $post["title"];
-
-    $auteur = $post["auteur"];
-
-    $bericht = $post["bericht"];
-}
-?>
-
 <h3 id="my-h3">Update Form</h3>
 <form action="update-post.php?id=<?php echo $id;?>" method="post">
     <div id="my-div">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="auteur">Auteur</label>
-            <input type="text" name="auteur" class="form-control" id="auteur" value="<?php echo $auteur;?>" placeholder="Auteur">
+            <input type="text" name="auteur" class="form-control" required id="auteur" value="<?php echo $auteur;?>" placeholder="Auteur">
         </div>
         <div class="form-group col-md-6">
             <label for="Title">Title</label>
-            <input type="text" name="title" class="form-control" id="Title" value="<?php echo $title;?>" placeholder="Title">
+            <input type="text" name="title" class="form-control" required id="Title" value="<?php echo $title;?>" placeholder="Title">
         </div>
     </div>
 
     <div class="form-group">
         <label for="exampleFormControlTextarea1">Bericht</label>
-        <textarea class="form-control" name="bericht" id="exampleFormControlTextarea1" rows="3"> <?php echo $bericht;?></textarea>
+        <textarea class="form-control" name="bericht" required id="exampleFormControlTextarea1" rows="3"><?php echo $bericht;?></textarea>
     </div>
 
         <input id="MySubmit" class="btn-outline-warning btn" type="submit" value="submit">

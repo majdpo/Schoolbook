@@ -1,110 +1,33 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<?php
+//If someone doesn't have an account he can only browse the posts
+//If the admin is the one who is checking the browse menu then he
+//will have the same navbar as the homepage
 
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <script src="../js/jquery-3.3.1.min.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <title>Document</title>
-</head>
+session_start();
+include "script/conectdb.php";
+$sql = "SELECT * FROM post";
+$sth = $db->prepare($sql);
+$sth->execute();
+if(!empty($_SESSION["Youlogged"])) {
+    if ($_SESSION['Youlogged'] == "Hello admin") {
+        include "templates/navbar.php";
+    }
+}
+include "templates/header.php";
+?>
 <body style="background-image: url('icons/4669215.jpg'); background-size: cover">
-<br>
-
-<div style="display: flex;align-content: space-between; margin-top: 20px">
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row no-gutters">
-        <div class="col-md-4">
-            <img src="icons/anime-1648169181417-8687.jpg" class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
+    <?php while($row = $sth->fetch()) { ?>
+    <div style="display: flex;align-content: space-between; padding: 75px">
+        <div class="card mb-3" style="width: 60%; text-align: center; margin-left: auto; margin-right: auto">
+            <img class="card-img-top" src="images/<?php echo $row['imageNewName'];?>" alt="<?php echo $row['imageNewName'];?>">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h5 class="card-title"><?php echo $row['title'];?></h5>
+                <p class="card-text"><?php echo $row['bericht'];?></p>
             </div>
         </div>
     </div>
-</div>
-    <p>ㅤ</p>
-    <div class="card mb-3" style="max-width: 540px;">
-    <div class="row no-gutters">
-        <div class="col-md-4">
-            <img src="icons/anime-1648169181417-8687.jpg" class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-        </div>
-    </div>
-</div>
-    <p>ㅤ</p>
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row no-gutters">
-        <div class="col-md-4">
-            <img src="icons/anime-1648169181417-8687.jpg" class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
+    <?php } ?>
 
 
-<div style="display: flex;align-content: space-between; margin-top: 20px">
-    <div class="card mb-3" style="max-width: 540px;">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img src="icons/anime-1648169181417-8687.jpg" class="card-img" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <p>ㅤ</p>
-    <div class="card mb-3" style="max-width: 540px;">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img src="icons/anime-1648169181417-8687.jpg" class="card-img" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <p>ㅤ</p>
-    <div class="card mb-3" style="max-width: 540px;">
-        <div class="row no-gutters">
-            <div class="col-md-4">
-                <img src="icons/anime-1648169181417-8687.jpg" class="card-img" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<p style="font-size: 20px; color: red">put it in a for loop so every img comes in a card and max of 3 cards per line</p>
 </body>
 </html>

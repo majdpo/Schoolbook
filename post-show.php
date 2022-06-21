@@ -1,4 +1,5 @@
-<!--Connection to DB, declaring all important variables, starting a session Part-->     <?php
+<!--Connection to DB, declaring all important variables, starting a session Part and including Header and Navbar-->
+<?php
 
 session_start();
 
@@ -14,10 +15,12 @@ $sth->execute();
 
 if ($_SESSION['Youlogged'] !== "Hello admin"){
     header("location:index.php");}
+include "templates/navbar.php";
 
 ?>
 
-<!--Style Part-->                                                                       <style>
+<!--Style Part-->
+<style>
   .Font{
       font-family: Arial;
   } td{
@@ -29,9 +32,8 @@ if ($_SESSION['Youlogged'] !== "Hello admin"){
    }
 </style>
 
-<?php include "templates/navbar.php";?>
-
-<!--Table Part-->                                                                       <table class="table">
+<!--Table Part-->
+<table class="table">
         <thead>
         <tr class="Font">
             <th>Id</th>
@@ -63,7 +65,7 @@ if ($_SESSION['Youlogged'] !== "Hello admin"){
                 <td><?php echo $row["datepost"]; ?></td>
                 <td><a href="delete-post.php?id=<?php echo $row["id"];?>" class="btn btn-outline-danger">Delete</a></td>
                 <td><a href="update/update-post-form.php?id=<?php echo $row["id"]?>" class="btn btn-outline-warning">Update</a></td>
-                <td><a href="likes.php?id=<?php echo $row["id"];?>" class="btn btn-outline-dark">  <?php if ($row["likepost"] > 1 || $row["likepost"] < 1){echo $row["likepost"] . " likes";} else { echo $row["likepost"] . " like";}?></td>
+                <td><a href="likes.php?id=<?php echo $row["id"];?>" class="btn btn-outline-dark">  <?php if ($row["likepost"] > 1 || $row["likepost"] < 1){ echo "❤ " . $row["likepost"] . " likes ";} else { echo "❤ " .  $row["likepost"] . " like";}?></td>
                 <td><img src="images/<?php echo $row["imageNewName"];?>" height="200px"></td>
                 <td><form action="comments.php?id=<?php echo $row["id"];?>" method="post">
                 <textarea name="NewComment" class="form-group" rows="2" style="background: transparent; border: solid 1px black"></textarea>
@@ -74,14 +76,16 @@ if ($_SESSION['Youlogged'] !== "Hello admin"){
         </tbody>
     </table>
 
-<!-- Comments Part-->                                                                   <div>
+<!-- Comments Part-->
+<div>
         <div class="dropdown-divider"></div>                                                                <br>
             <h3 style="color: #000000; text-align: center;" class="Font">Comments</h3>
         <div style="margin-right: 20%; margin-left: 20%" class="dropdown-divider"></div><p></p>
         <div style="margin-right: 15%; margin-left: 15%" class="dropdown-divider"></div>                    <br>
 </div>
 
-<!--Comments display Part-->                                                            <?php
+<!--Comments display Part-->
+<?php
 $sql2 = "SELECT * FROM comments WHERE id = $id";
 $sth = $db->prepare($sql2);
 $sth->execute();
@@ -92,7 +96,9 @@ while ($row = $sth->fetch()) {
           <input type='submit' value='Delete Comment' class='btn btn-outline-danger'></form><h4>Admin commented: </h4>" . " 
           <h6 style='color: gray'> {$row['comment']} </h6>" . "<div class='dropdown-divider'></div> "; } ?>
 
-<!--Footer Part-->                                                                      </html>
+<!--Footer Part-->
+</html>
 
 
-<!--You have to do js like button, edit system for admin only, HP dropdown menu and design the Comments section!-->
+<!--3/24 task: You have to do edit system for admin only, dropdown menu and design the Comments section!-->
+<!--The task above me is done!-->

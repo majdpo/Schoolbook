@@ -1,4 +1,5 @@
 <?php
+//Updating the post section
 include "../script/conectdb.php";
 $id=$_GET['id'];
 $auteur=$_POST['auteur'];

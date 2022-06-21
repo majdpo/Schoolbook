@@ -21,17 +21,17 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="auteur">Auteur</label>
-                            <input type="text" name="auteur" class="form-control" id="auteur" placeholder="Auteur">
+                            <input type="text" required name="auteur" class="form-control" id="auteur" placeholder="Auteur">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="Title">Title</label>
-                            <input type="text" name="title" class="form-control" id="Title" placeholder="Title">
+                            <input type="text" required name="title" class="form-control" id="Title" placeholder="Title">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Bericht</label>
-                        <textarea class="form-control" name="bericht" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" required name="bericht" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
                     
 <style>
@@ -48,8 +48,6 @@
                             <input type="file" name="ImageUpload" accept="image/*" class="input-group-text" style="background: white">
                         </div>
                     </div>
-                    <input type="hidden" value='<?php echo date("Y/m/d h:i:s");?>' name="datepost">
-                    <input type="hidden" value='<?php echo 0;?>' name="like">
 
 
 

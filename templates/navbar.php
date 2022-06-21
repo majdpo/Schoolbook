@@ -21,7 +21,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="browse.php">Browse Images</a>
                     <div class="dropdown-divider"></div>
                     <button onclick="ChangeSession()" class=" btn btn-outline-danger" style="margin-left:23.5%">Log Out</button>
                 </div>

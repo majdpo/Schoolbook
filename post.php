@@ -1,14 +1,17 @@
 <?php
-
+// Simple, connecting to DB, Getting data from the post form, Validation of the image and inserting data into the DB.
 include "script/conectdb.php";
-
 
 $auteur = $_POST['auteur'];
 $title= $_POST['title'];
 $bericht= $_POST['bericht'];
-$datepost=$_POST['datepost'];
+$datepost= date("Y/m/d h:i:s");
 $image =$_FILES['ImageUpload'];
-$likenew= $_POST['like'];
+$likenew= 0;
+
+if (empty($auteur) || empty($bericht) || empty($title)){
+    die("<h1 style='text-align: center;'>Please fill the form fully <script> setInterval( window.location.href='main-page.php', 2000)</script></h1>");
+}
 
 
 $imageName = $_FILES['ImageUpload']['name'];
